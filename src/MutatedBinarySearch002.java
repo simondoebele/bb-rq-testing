@@ -1,6 +1,6 @@
 import java.util.Arrays;
 // Mutated versions of binary search exhibit different kinds of mutations.
-// Mutation here: Scalar Variable Replacement in sortArrayAscending()
+// Mutation here: Assignment Operator Replacement in sortArrayAscending()
 
 public class MutatedBinarySearch002 {
 
@@ -38,7 +38,7 @@ public class MutatedBinarySearch002 {
                 if (A[i] > A[j]){
                     int temp = A[i];
                     // A[i] = A[j]; <- actually correct version. Next line: Mutation.
-                    A[i] = temp;
+                    A[i] += A[j];;
                     A[j] = temp;
                 }
             }

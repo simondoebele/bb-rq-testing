@@ -65,7 +65,7 @@ public class MutatedBinarySearch006 {
             }
             else {
                 // right = mid - 1; <- actually correct version. Next line: Mutation.
-                right = mid;
+                right = left + 1;
             }
             mid = (left+right)/2;
         }
