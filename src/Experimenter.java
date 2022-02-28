@@ -25,7 +25,7 @@ public class Experimenter {
         int[] testSuiteLengths = {10,100,500,1000};
         for (int i = 0; i < testSuiteLengths.length; i++){
             ArrayList<RandomTest> ts = generateRandomTestSuite(testSuiteLengths[i],arrayLength);
-            String filename = "RandomTestsuite_" + testSuiteLengths[i] + ".txt";
+            String filename = "RandomTestsuite_Length" + testSuiteLengths[i] + "ArrayLength" + arrayLength + ".txt";
             ReadWriter.writeToFile(ts, filename);
         }
         // TODO: create PairWise Test Suites and write to file:

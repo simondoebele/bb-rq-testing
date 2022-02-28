@@ -1,8 +1,8 @@
 import java.util.Arrays;
 // Mutated versions of binary search exhibit different kinds of mutations.
-// Mutation here: Relational Operator Replacement in sortArrayAscending() method
+// Mutation here: Arithmetic Operator Replacement in BinarySearch()
 
-public class MutatedBinarySearch001 {
+public class MutatedBinarySearch003 {
 
     /*@ pure @*/
     public static boolean hasSameElements(int[] A, int[] B){
@@ -35,8 +35,7 @@ public class MutatedBinarySearch001 {
     public static int[] sortArrayAscending(int[] A){
         for (int i = 0; i < A.length; i++) {
             for (int j = i+1; j < A.length; j++) {
-                // if (A[i] > A[j]){ <- actually correct version. Next line: Mutation.
-                if (A[i] < A[j]){
+                if (A[i] > A[j]){
                     int temp = A[i];
                     A[i] = A[j];
                     A[j] = temp;
@@ -59,7 +58,8 @@ public class MutatedBinarySearch001 {
 
         while (left <= right) {
             if(A[mid]<key){
-                left = mid + 1;
+                //left = mid + 1; <- actually correct version. Next line: Mutation.
+                left = mid - 1;
             }
             else if (A[mid] == key){
                 return mid;
