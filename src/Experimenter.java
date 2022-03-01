@@ -13,7 +13,7 @@ public class Experimenter {
         for (int i = 0; i < testSuiteLengths.length; i++){
             ArrayList<RandomTest> rts = RandomTest.generateRandomTestSuite(testSuiteLengths[i],arrayLength);
             printRandomTestsuite(rts);
-            String filename = "RandomTestsuite_Length" + testSuiteLengths[i] + "ArrayLength_" + arrayLength + ".txt";
+            String filename = "RandomTestsuite_Length" + testSuiteLengths[i] + "_ArrayLength_" + arrayLength + ".txt";
             RandomTest.writeToFile(rts, filename);
         }
 

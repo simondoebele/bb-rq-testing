@@ -17,17 +17,14 @@ public class RandomTest implements Serializable {
 
     public static int[] generateRandomIntegerArray(int length){
         int[] numbers = new int[length];
-        Random rand = new Random();
         for (int i = 0; i < length; i++){
-            numbers[i] = rand.nextInt();
+            numbers[i] = min + (int)(Math.random() * ((max - min) + 1));
         }
         return numbers;
     }
 
     public static int generateRandomKey(){
-        int min = Integer.MIN_VALUE;
-        int max = Integer.MAX_VALUE;
-        return (int)Math.floor(Math.random()*(max-min)+min);
+        return min + (int)(Math.random() * ((max - min) + 1));
     }
 
     public static ArrayList<RandomTest> generateRandomTestSuite(int lengthOfTestSuite, int lengthOfArray){
