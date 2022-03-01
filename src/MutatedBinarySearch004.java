@@ -57,7 +57,7 @@ public class MutatedBinarySearch004 {
         int mid = (left+right)/2;
 
         //while (left <= right) { <- actually correct version. Next line: Mutation.
-        while (false) {
+        while (left < right) {
             if(A[mid]<key){
                 left = mid + 1;
             }

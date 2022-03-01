@@ -91,7 +91,7 @@ public class PairwiseTest implements Serializable {
     return testSuite;
   }
 
-  public static void print(int[][] grid) {
+  /*public static void print(int[][] grid) {
     for (int i = 0; i < grid.length; i++) {
       System.out.print(i+1 + ") [");
       if(grid[i].length >= 1) {
@@ -113,6 +113,6 @@ public class PairwiseTest implements Serializable {
     // print(twoWise(20));
     //System.out.println(25 / 19);
 
-  }
+  }*/
 
 }

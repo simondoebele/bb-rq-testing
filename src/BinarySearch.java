@@ -80,11 +80,11 @@ public class BinarySearch {
     }
 
     // checking that program works.
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         int[] A = {2,5,1,3,4};
         int key = 1;
 
         int result = sortThenBinarySearch(A, key);
         System.out.println(result);
-    }
+    }*/
 }

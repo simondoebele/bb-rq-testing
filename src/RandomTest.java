@@ -5,6 +5,10 @@ import java.util.Random;
 public class RandomTest implements Serializable {
     int[] arrayVals;
     int key;
+    // We aim to restrict our array values in order to certain values,
+    // so to have test cases where we find the key.
+    public static int min = -20;
+    public static int max = 20;
 
     public RandomTest(int length) {
         arrayVals = generateRandomIntegerArray(length);
@@ -21,7 +25,7 @@ public class RandomTest implements Serializable {
     }
 
     public static int generateRandomKey(){
-        int min = Integer.MIN_VALUE; // shall we even test for overflow / underflow?
+        int min = Integer.MIN_VALUE;
         int max = Integer.MAX_VALUE;
         return (int)Math.floor(Math.random()*(max-min)+min);
     }
