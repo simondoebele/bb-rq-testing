@@ -2,35 +2,25 @@
 // in order to find specific mutation error.
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Experimenter {
-
-    public static ArrayList<RandomTest> generateRandomTestSuite(int lengthOfTestSuite, int lengthOfArray){
-        ArrayList<RandomTest> testSuite = new ArrayList<RandomTest>();
-        for (int i = 0; i < lengthOfTestSuite; i++ ) {
-            testSuite.add(new RandomTest (lengthOfArray));
-        }
-        return testSuite;
-    }
-
-    public static ArrayList<PairwiseTest> generatePairwiseTestSuite(int lengthOfTestSuite, int lengthOfArray) {
-        // TODO: write function
-        return null;
-    }
-
 
     public static void main(String[] args) {
         int arrayLength = 20;
         // create Random Test Suites and write to file:
         int[] testSuiteLengths = {10,100,500,1000};
         for (int i = 0; i < testSuiteLengths.length; i++){
-            ArrayList<RandomTest> ts = generateRandomTestSuite(testSuiteLengths[i],arrayLength);
-            String filename = "RandomTestsuite_Length" + testSuiteLengths[i] + "ArrayLength" + arrayLength + ".txt";
-            ReadWriter.writeToFile(ts, filename);
+            ArrayList<RandomTest> rts = RandomTest.generateRandomTestSuite(testSuiteLengths[i],arrayLength);
+            String filename = "RandomTestsuite_Length" + testSuiteLengths[i] + "ArrayLength_" + arrayLength + ".txt";
+            RandomTest.writeToFile(rts, filename);
         }
         // TODO: create PairWise Test Suites and write to file:
-
+        ArrayList<PairwiseTest> pts = PairwiseTest.generatePairwiseTestSuite(arrayLength);
+        String filename = "PairwiseTestsuite_" + "ArrayLength_" + arrayLength + ".txt";
+        PairwiseTest.writeToFile(pts, filename);
         // TODO: experiment with random test suite sizes
+
     }
 
 

@@ -1,8 +1,8 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Random;
 
-public class RandomTest {
+public class RandomTest implements Serializable {
     int[] arrayVals;
     int key;
 
@@ -26,12 +26,39 @@ public class RandomTest {
         return (int)Math.floor(Math.random()*(max-min)+min);
     }
 
-    public static Map<int[], Integer> generateRandomTest(int length){
-        int key = generateRandomKey();
-        int[] array = generateRandomIntegerArray((length));
-        Map<int[], Integer> map = new HashMap<int[], Integer>();
-        map.put(array, key);
-        return map;
+    public static ArrayList<RandomTest> generateRandomTestSuite(int lengthOfTestSuite, int lengthOfArray){
+        ArrayList<RandomTest> testSuite = new ArrayList<RandomTest>();
+        for (int i = 0; i < lengthOfTestSuite; i++ ) {
+            testSuite.add(new RandomTest(lengthOfArray));
+        }
+        return testSuite;
     }
 
+    // write an ArrayList of RandomTests (= the testsuite) to a file
+    public static void writeToFile(ArrayList<RandomTest> testSuite, String filename) {
+        try(FileOutputStream f = new FileOutputStream(filename);
+            ObjectOutput s = new ObjectOutputStream(f)) {
+            s.writeObject(testSuite);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // read an array of arrays (= the testsuite) from a file
+    public static ArrayList<RandomTest> readSerialized(String filename) {
+        ArrayList<RandomTest> testSuite = null;
+        try (FileInputStream in = new FileInputStream(filename);
+             ObjectInputStream s = new ObjectInputStream(in)) {
+            testSuite = (ArrayList<RandomTest>) s.readObject();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return testSuite;
+    }
 }

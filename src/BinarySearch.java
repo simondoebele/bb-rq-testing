@@ -5,17 +5,6 @@ import java.util.*;
 
 public class BinarySearch {
 
-    // pure helper method for sortArrayAscending method.
-    /*@ pure @*/
-    public static boolean hasSameElements(int[] A, int[] B){
-        // create clones to avoid sorting in place.
-        int[] tempA = A.clone();
-        int[] tempB = B.clone();
-        Arrays.sort(tempA);
-        Arrays.sort(tempB);
-        return Arrays.equals(tempA,tempB);
-    }
-
     //input: array of values (chosen from ordered set, here: ints), key
     //output: boolean (key occurs -> TRUE, else FALSE)
     // 2 iii) JML for membership
@@ -37,10 +26,10 @@ public class BinarySearch {
     //input: array of values (chosen from ordered set, here we assume ints)
     //output: array of same length + elements in ascending order
     // 2 i) JML for sorting
-    /*@ requires A.length >= 1;
+    /*@ requires A!= null;
     @ ensures A.length == \old(A.length);
     @ ensures (\forall int i,j; 0 <= i & i < j & j < A.length; A[i] <= A[j]);
-    @ ensures hasSameElements(A, \old(A));
+    @ ensures \forall int j; 0 <= j && j < A.length; (\num_of int i; 0 <= i && i < A.length; A[i] == \old(A[j]) ) == (\num_of int i; 0 <= i && i < A.length; \old(A[i]) == \old A([j]))
     @*/
     public static int[] sortArrayAscending(int[] A){
         for (int i = 0; i < A.length; i++) {
@@ -62,7 +51,7 @@ public class BinarySearch {
     /*@ requires A.length >= 1;
     @ requires (\forall int i,j; 0 <= i & i < j & j < A.length; A[i] <= A[j]);
     @ ensures A == \old(A);
-    @ ensures (isMember(A, key) == true) ==> (\exists int i; 0 <= i && i < A.length; A[i] == \result);
+    @ ensures (\result >= 0) ==> (\exists int i; 0 <= i && i < A.length; A[i] == \result);
     @ ensures (\result == -1) ==> !(\exists int i; 0 <= i && i < A.length; A[i] == key);
     @*/
     public static int binarySearch(int[] A, int key){
