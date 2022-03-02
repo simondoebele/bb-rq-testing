@@ -19,14 +19,14 @@ public class Oracle {
         return true;
     }
 
-    public static boolean testSearch(int[] supposedlySortedArray, int key) {
-        boolean contained = contains(supposedlySortedArray, key); //ground truth
+    public static boolean testSearch(int[] array, int key) {
+        boolean contained = contains(array, key); //ground truth
         // compare ground truth against our method: our method should conclude the same as the ground truth
         if (contained){
-            return (BinarySearch.sortThenBinarySearch(supposedlySortedArray, key) >= 0);
+            return (BinarySearch.sortThenBinarySearch(array, key) >= 0);
         }
         else {
-            return (BinarySearch.sortThenBinarySearch(supposedlySortedArray, key) == -1);
+            return (BinarySearch.sortThenBinarySearch(array, key) == -1);
         }
     }
 
@@ -55,6 +55,7 @@ public class Oracle {
 
         for (int i = 0; i < rts.size(); i++) {
             RandomTest rTestDatum = rts.get(i);
+            numberOfRandomTests++;
             BinarySearch.sortArrayAscending(rTestDatum.arrayVals);
             if (!testSortExpectTrue(rTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -65,7 +66,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfRandomTests++;
         }
         System.out.println("Number of tests: Binary Search (Random): "+ numberOfRandomTests); // all tests should pass.
 
@@ -73,6 +73,7 @@ public class Oracle {
         int numberOfPairWiseTests = 0;
         for (int i = 0; i < pts.size(); i++) {
             PairwiseTest pTestDatum = pts.get(i);
+            numberOfPairWiseTests++;
             BinarySearch.sortArrayAscending(pTestDatum.arrayVals);
             if (!testSortExpectTrue(pTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -83,7 +84,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfPairWiseTests++;
         }
         System.out.println("Number of tests: Binary Search (PairWise): "+ numberOfPairWiseTests); // all tests should pass.
         System.out.println("================================================="); // all tests should pass.
@@ -112,6 +112,7 @@ public class Oracle {
 
         for (int i = 0; i < rts.size(); i++) {
             RandomTest rTestDatum = rts.get(i);
+            numberOfRandomTests++;
             MutatedBinarySearch001.sortArrayAscending(rTestDatum.arrayVals);
             if (!testSortExpectTrue(rTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -122,7 +123,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfRandomTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 001 (Random): "+ numberOfRandomTests);
         System.out.println("--------------------");
@@ -131,6 +131,7 @@ public class Oracle {
         numberOfPairWiseTests = 0;
         for (int i = 0; i < pts.size(); i++) {
             PairwiseTest pTestDatum = pts.get(i);
+            numberOfPairWiseTests++;
             MutatedBinarySearch001.sortArrayAscending(pTestDatum.arrayVals);
             if (!testSortExpectTrue(pTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -141,7 +142,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfPairWiseTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 001 (PairWise): "+ numberOfPairWiseTests);
         System.out.println("=================================================");
@@ -166,6 +166,7 @@ public class Oracle {
 
         for (int i = 0; i < rts.size(); i++) {
             RandomTest rTestDatum = rts.get(i);
+            numberOfRandomTests++;
             MutatedBinarySearch002.sortArrayAscending(rTestDatum.arrayVals);
             if (!testSortExpectTrue(rTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -176,7 +177,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfRandomTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 002 (Random): "+ numberOfRandomTests);
         System.out.println("--------------------");
@@ -185,6 +185,7 @@ public class Oracle {
         numberOfPairWiseTests = 0;
         for (int i = 0; i < pts.size(); i++) {
             PairwiseTest pTestDatum = pts.get(i);
+            numberOfPairWiseTests++;
             MutatedBinarySearch002.sortArrayAscending(pTestDatum.arrayVals);
             if (!testSortExpectTrue(pTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -195,7 +196,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfPairWiseTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 002 (PairWise): "+ numberOfPairWiseTests);
         System.out.println("=================================================");
@@ -218,10 +218,11 @@ public class Oracle {
         pts = PairwiseTest.readSerialized(filename);
 
         // -> random
-        numberOfRandomTests = 0;
+        /*numberOfRandomTests = 0;
 
         for (int i = 0; i < rts.size(); i++) {
             RandomTest rTestDatum = rts.get(i);
+            numberOfRandomTests++;
             MutatedBinarySearch003.sortArrayAscending(rTestDatum.arrayVals);
             if (!testSortExpectTrue(rTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -232,7 +233,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfRandomTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 003 (Random): "+ numberOfRandomTests);
         System.out.println("--------------------");
@@ -241,6 +241,7 @@ public class Oracle {
         numberOfPairWiseTests = 0;
         for (int i = 0; i < pts.size(); i++) {
             PairwiseTest pTestDatum = pts.get(i);
+            numberOfPairWiseTests++;
             MutatedBinarySearch003.sortArrayAscending(pTestDatum.arrayVals);
             if (!testSortExpectTrue(pTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -251,10 +252,9 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfPairWiseTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 003 (PairWise): "+ numberOfPairWiseTests);
-        System.out.println("=================================================");
+        System.out.println("=================================================");*/
 
 
 
@@ -276,6 +276,7 @@ public class Oracle {
 
         for (int i = 0; i < rts.size(); i++) {
             RandomTest rTestDatum = rts.get(i);
+            numberOfRandomTests++;
             MutatedBinarySearch004.sortArrayAscending(rTestDatum.arrayVals);
             if (!testSortExpectTrue(rTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -286,7 +287,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfRandomTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 004 (Random): "+ numberOfRandomTests);
         System.out.println("--------------------");
@@ -295,6 +295,7 @@ public class Oracle {
         numberOfPairWiseTests = 0;
         for (int i = 0; i < pts.size(); i++) {
             PairwiseTest pTestDatum = pts.get(i);
+            numberOfPairWiseTests++;
             MutatedBinarySearch004.sortArrayAscending(pTestDatum.arrayVals);
             if (!testSortExpectTrue(pTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -305,7 +306,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfPairWiseTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 004 (PairWise): "+ numberOfPairWiseTests);
         System.out.println("=================================================");
@@ -332,6 +332,7 @@ public class Oracle {
 
         for (int i = 0; i < rts.size(); i++) {
             RandomTest rTestDatum = rts.get(i);
+            numberOfRandomTests++;
             MutatedBinarySearch005.sortArrayAscending(rTestDatum.arrayVals);
             if (!testSortExpectTrue(rTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -342,7 +343,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfRandomTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 005 (Random): "+ numberOfRandomTests);
         System.out.println("--------------------");
@@ -351,6 +351,7 @@ public class Oracle {
         numberOfPairWiseTests = 0;
         for (int i = 0; i < pts.size(); i++) {
             PairwiseTest pTestDatum = pts.get(i);
+            numberOfPairWiseTests++;
             MutatedBinarySearch005.sortArrayAscending(pTestDatum.arrayVals);
             if (!testSortExpectTrue(pTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -361,7 +362,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfPairWiseTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 005 (PairWise): "+ numberOfPairWiseTests);
         System.out.println("=================================================");
@@ -374,7 +374,7 @@ public class Oracle {
 
         // MBS006-> compare random and pairwise
         // make a new copy by reading in the data again.
-        rts = null;
+        /*rts = null;
         for (int i = 0; i < testSuiteLengths.length; i++) {
             filename = "RandomTestsuite_Length" + testSuiteLengths[i] + "_ArrayLength_" + arrayLength + ".txt";
             rts = RandomTest.readSerialized(filename);
@@ -388,6 +388,7 @@ public class Oracle {
 
         for (int i = 0; i < rts.size(); i++) {
             RandomTest rTestDatum = rts.get(i);
+            numberOfRandomTests++;
             MutatedBinarySearch006.sortArrayAscending(rTestDatum.arrayVals);
             if (!testSortExpectTrue(rTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -398,7 +399,6 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfRandomTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 006 (Random): "+ numberOfRandomTests);
         System.out.println("--------------------");
@@ -407,6 +407,7 @@ public class Oracle {
         numberOfPairWiseTests = 0;
         for (int i = 0; i < pts.size(); i++) {
             PairwiseTest pTestDatum = pts.get(i);
+            numberOfPairWiseTests++;
             MutatedBinarySearch006.sortArrayAscending(pTestDatum.arrayVals);
             if (!testSortExpectTrue(pTestDatum.arrayVals)){
                 System.out.println("Sort failed.");
@@ -417,12 +418,16 @@ public class Oracle {
                 System.out.println("Search failed.");
                 break;
             }
-            numberOfPairWiseTests++;
         }
         System.out.println("Number of tests: Mutated Binary Search 006 (PairWise): "+ numberOfPairWiseTests);
-        System.out.println("=================================================");
+        System.out.println("=================================================");*/
 
         // TODO: the testsuites done anew, will give new test cases. Then it's not a fair comparison...
         // hence: need to do a deep copy of the array list objects...
+        // TODO: might need to "try catch" the errors -> break out of loop in the catch part. to end the counting.
+        //
+        // MBS 003: commented out because creates an infinite loop! / Timeout for Random Testing and Pairwise Testing.
+        // MBS 006: commented out because creates an infinite loop! / Timeout for Random Testing and Pairwise Testing.
+
     }
 }

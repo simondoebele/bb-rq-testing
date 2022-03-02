@@ -56,7 +56,7 @@ public class BinarySearch {
     @*/
     public static int binarySearch(int[] A, int key){
         int left = 0;
-        int right = A.length;
+        int right = A.length-1;
         int mid = (left+right)/2;
 
         while (left <= right) {
