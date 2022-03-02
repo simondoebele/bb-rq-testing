@@ -22,7 +22,7 @@ public class Experimenter {
         printPairwiseTestsuite(pts);
         String filename = "PairwiseTestsuite_" + "ArrayLength_" + arrayLength + ".txt";
         PairwiseTest.writeToFile(pts, filename);
-        // TODO: experiment with random test suite sizes
+        // possibly todo: experiment with random test suite sizes
 
     }
 
