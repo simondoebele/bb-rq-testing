@@ -1,5 +1,4 @@
-// This class solves tasks 2 i), ii), iii) and iv)
-// as well as 3 i), ii) and iii).
+
 
 import java.util.*;
 
@@ -7,7 +6,7 @@ public class BinarySearch {
 
     //input: array of values (chosen from ordered set, here: ints), key
     //output: boolean (key occurs -> TRUE, else FALSE)
-    // 2 iii) JML for membership
+    // JML for membership
     /*@ requires A.length >= 1;
     @ ensures (\result == true) ==> (\exists int i; 0 <= i && i < A.length; A[i] == key);
     @ ensures (\result == false) ==> !(\exists int i; 0 <= i && i < A.length; A[i] == key);
@@ -22,10 +21,10 @@ public class BinarySearch {
         return false;
     }
 
-    // 3 i) sorts integer arrays of arbitrary length
+    // sorts integer arrays of arbitrary length
     //input: array of values (chosen from ordered set, here we assume ints)
     //output: array of same length + elements in ascending order
-    // 2 i) JML for sorting
+    // JML for sorting
     /*@ requires A!= null;
     @ ensures A.length == \old(A.length);
     @ ensures (\forall int i,j; 0 <= i & i < j & j < A.length; A[i] <= A[j]);
@@ -44,10 +43,10 @@ public class BinarySearch {
         return A;
     }
 
-    // 3 ii) membership queries using binary search
+    //  membership queries using binary search
     //input: sorted(!) array of values (chosen from ordered set, here: ints), key (=value that might occur in the array)
     //output: n if key occurs in position n, else -1
-    // 2 ii) + iv) JML for searching and BinarySearch (no difference between the two, other than binarySearch being of a certain speed requirement)
+    // JML for searching and BinarySearch (no difference between the two, other than binarySearch being of a certain speed requirement)
     /*@ requires A.length >= 1;
     @ requires (\forall int i,j; 0 <= i & i < j & j < A.length; A[i] <= A[j]);
     @ ensures A == \old(A);
@@ -74,12 +73,12 @@ public class BinarySearch {
         return -1;
     }
 
-    // 3 iii) combining sorting with binary Search
+    // combining sorting with binary Search
     public static int sortThenBinarySearch(int[] A, int k){
         return binarySearch(sortArrayAscending(A),k);
     }
 
-    // checking that program works.
+    // quick test:
     /*public static void main(String[] args) {
         int[] A = {2,5,1,3,4};
         int key = 1;
